@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from "express";
 import cors from "cors";
-import { geminiGenrateContent } from "./utils/gemini.js";
+import { geminiGenerateContent } from "./utils/gemini.js";
 import mongoose from 'mongoose';
 import chatRouter from './routes/chat.js';
 
@@ -19,7 +19,7 @@ app.post('/test', async (req,res)=>{
     try{
     const body = req.body;
     const prompt = body.prompt;
-    const content = await geminiGenrateContent(prompt)
+    const content = await geminiGenerateContent(prompt)
     console.log("content", content)
     res.send(content)
     }catch(err){

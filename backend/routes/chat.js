@@ -1,5 +1,6 @@
 import express from 'express'
 import { Threads } from '../models/threads.js';
+import { geminiGenerateContent } from '../utils/gemini.js';
 
 const chatRouter = express.Router();
 
@@ -56,7 +57,39 @@ chatRouter.delete('/thread/:id', async(req,res)=>{
     }
 })
 
+chatRouter.post('/chat', async(req,res)=>{
+    try{
+        const {threadId, message} = req.body;
+        if(!threadId || !message){
+            throw new Error("Invalid request parameters");
+        }
+        let thread = await Threads.findOne({threadId});
+        if(!thread){
+            thread = new Threads({threadId,title: message, messages: [{
+                role: "user", 
+                content: message
+            }]});
+        }
+        else{
+            thread.messages.push({
+            role: "user",
+            content: message
+        });
+        }
+        const assistantReply = await geminiGenerateContent(message);
 
+        thread.messages.push({
+            role: "assistant",
+            content: assistantReply
+        });
+                                     
+        await thread.save();
+        res.json({reply : assistantReply, thread});
+    }catch(err){
+        console.log(err)
+        res.status(500),json({Error: err})
+    }
+})
 
 
 export default chatRouter;
