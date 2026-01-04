@@ -57,7 +57,8 @@ chatRouter.delete('/thread/:id', async(req,res)=>{
     }
 })
 
-chatRouter.post('/chat', async(req,res)=>{
+
+chatRouter.post('/talk', async(req,res)=>{
     try{
         const {threadId, message} = req.body;
         if(!threadId || !message){

@@ -4,6 +4,7 @@ import cors from "cors";
 import { geminiGenerateContent } from "./utils/gemini.js";
 import mongoose from 'mongoose';
 import chatRouter from './routes/chat.js';
+import userRouter from './routes/user.js';
 
 const app = express()
 
@@ -27,7 +28,8 @@ app.post('/test', async (req,res)=>{
     }
 })
 
-app.use('/api/v1/chat',chatRouter)
+app.use('/api/v1/chat',chatRouter);
+app.use('/api/v1/user', userRouter);
 
 
 

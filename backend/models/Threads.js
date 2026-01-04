@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const messageSchema = new mongoose.Schema({
     role :{
         type: String,
-        enum : ["user", " assistant"],
+        enum : ["user", "assistant"],
         require : true
     },
     content : {
@@ -13,7 +13,7 @@ const messageSchema = new mongoose.Schema({
     timestamp: { type: Date, default: Date.now }
 })
 
-const threadSchema = new mongoose.Schema({
+export const threadSchema = new mongoose.Schema({
     threadId:{
         type : String,
         required: true,
@@ -25,5 +25,6 @@ const threadSchema = new mongoose.Schema({
     },
     messages : [messageSchema],
 },{ timestamps: true });
+
 
 export const Threads = mongoose.model("Threads", threadSchema);
