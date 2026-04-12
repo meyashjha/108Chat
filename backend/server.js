@@ -8,7 +8,10 @@ import userRouter from './routes/user.js';
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+  origin: process.env.FRONTEND_URL || '*',
+  credentials: true
+}))
 app.use(express.json())
 
 
@@ -36,5 +39,6 @@ app.use('/api/v1/user', userRouter);
 
  ConnectDB().then(()=>{
     console.log("Database Connected !")
-    app.listen(3000, ()=>{console.log("listening at 3000")})
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, ()=>{console.log(`listening at ${PORT}`)})
  }).catch("Database connection failed , Server Not Started")

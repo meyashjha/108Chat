@@ -30,7 +30,7 @@ const Sidebar = () => {
 const getallThreads = async()=>{
     try{
       const token = localStorage.getItem('token');
-      const res = await fetch("http://localhost:3000/api/v1/chat/thread", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/chat/thread`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
@@ -64,7 +64,7 @@ const changeThread = (threadId)=>{
 const deleteThread = async(Id)=>{
   try{
     const token = localStorage.getItem('token');
-    const res = await fetch(`http://localhost:3000/api/v1/chat/thread/${Id}`,{
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/chat/thread/${Id}`,{
       method: "DELETE",
       headers: { 'Authorization': `Bearer ${token}` }
     });

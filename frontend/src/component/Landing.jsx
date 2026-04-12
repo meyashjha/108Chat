@@ -14,7 +14,9 @@ const Landing = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage('');
-    const url = isLogin ? 'http://localhost:3000/api/v1/user/login' : 'http://localhost:3000/api/v1/user/signup';
+    const url = isLogin
+      ? `${import.meta.env.VITE_API_URL}/api/v1/user/login`
+      : `${import.meta.env.VITE_API_URL}/api/v1/user/signup`;
     const payload = isLogin ? { email: form.email, password: form.password } : form;
     try {
       const res = await fetch(url, {

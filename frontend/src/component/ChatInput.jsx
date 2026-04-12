@@ -26,7 +26,7 @@ const ChatInput = () => {
     console.log("Fetching response for prompt:", prompt, "in thread:", threadId);
 
     try {
-      const response = await fetch("http://localhost:3000/api/v1/chat/talk", options);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/chat/talk`, options);
       const data = await response.json();
       setReply(data);
       setloading(false);
