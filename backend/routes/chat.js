@@ -1,6 +1,6 @@
 
 import express from 'express';
-import { Threads } from '../models/threads.js';
+import { Threads } from '../models/Threads.js';
 import { geminiGenerateContent } from '../utils/gemini.js';
 import { parallelSearch, parallelChat } from '../utils/parallel.js';
 import { Users } from '../models/Users.js';
