@@ -1,11 +1,11 @@
-import Chatwindow from "./Chatwindow"
+import ChatWindow from "./ChatWindow"
 import Sidebar from "./Sidebar"
 
 const Chat = () => {
   return (
-    <div className="grid grid-cols-12 h-screen">
-        <div className="col-span-2"><Sidebar/></div>
-        <div className="col-span-10"><Chatwindow/></div>      
+    <div className="flex h-screen">
+        <div className="shrink-0"><Sidebar/></div>
+        <div className="flex-1 overflow-hidden"><ChatWindow/></div>      
     </div>
   )
 }

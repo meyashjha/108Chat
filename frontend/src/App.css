@@ -1,1 +1,34 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+*{
+    color: #ececec;
+    font-family: Roboto,'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.app{
+    background-color: #212121;
+
+}
+
+.hljs {
+  padding: 5px;
+  border-radius: 10px;
+}
+
+pre{
+    white-space: pre-wrap;
+}
+
+.fa-trash:hover {
+   color: red !important;
+}
+
+.history:hover .fa-trash{
+    opacity:1 !important;
+}
+

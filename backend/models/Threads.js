@@ -27,4 +27,4 @@ export const threadSchema = new mongoose.Schema({
 },{ timestamps: true });
 
 
-export const Threads = mongoose.model("Threads", threadSchema);
+export const Threads = mongoose.models.Threads || mongoose.model("Threads", threadSchema);

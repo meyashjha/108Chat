@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {threadSchema} from "./Thread"
+import { threadSchema } from "./Threads.js";
 
 const userSchema = new mongoose.Schema({
     name :{
@@ -15,7 +15,10 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false 
     },
-
+    password:{
+        type: String,
+        required: true
+    },
     threads : [threadSchema]
 
 }, 
