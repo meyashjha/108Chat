@@ -14,6 +14,10 @@ app.use(cors({
 }))
 app.use(express.json())
 
+app.get('/health', (req, res) => {
+    res.json({ status: 'ok' })
+})
+
 
 async function ConnectDB(){
     await mongoose.connect(process.env.MONGODB_URI)
